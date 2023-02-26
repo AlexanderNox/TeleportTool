@@ -1,3 +1,4 @@
+using Infrastructure;
 using Zenject;
 
 namespace Installer

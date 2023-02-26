@@ -3,37 +3,40 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+namespace Infrastructure
 {
-    public event Action LoadStarted; 
-    public event Action LoadEnded;
-    private bool _loading;
-
-    private void Awake()
+    public class SceneLoader : MonoBehaviour
     {
-        DontDestroyOnLoad(this);
-        _loading = false;
-    }
+        public event Action LoadStarted; 
+        public event Action LoadEnded;
+        private bool _loading;
 
-    public void Load(string name)
-    {
-        if (_loading == false)
+        private void Awake()
         {
-            StartCoroutine(LoadScene(name));
+            DontDestroyOnLoad(this);
+            _loading = false;
         }
-    }
 
-    private IEnumerator LoadScene(string nextScene)
-    {
-        _loading = true;
-        LoadStarted?.Invoke();
+        public void Load(string name)
+        {
+            if (_loading == false)
+            {
+                StartCoroutine(LoadScene(name));
+            }
+        }
 
-        AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(nextScene);
+        private IEnumerator LoadScene(string nextScene)
+        {
+            _loading = true;
+            LoadStarted?.Invoke();
 
-        while (!waitNextScene.isDone)
-            yield return null;
+            AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(nextScene);
+
+            while (!waitNextScene.isDone)
+                yield return null;
         
-        _loading = false;
-        LoadEnded?.Invoke();
+            _loading = false;
+            LoadEnded?.Invoke();
+        }
     }
 }

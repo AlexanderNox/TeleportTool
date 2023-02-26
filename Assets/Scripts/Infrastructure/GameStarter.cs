@@ -2,19 +2,22 @@ using Configs;
 using UnityEngine;
 using Zenject;
 
-public class GameStarter : MonoBehaviour
+namespace Infrastructure
 {
-    [SerializeField] private GameConfig _gameConfig;
-    private SceneLoader _sceneLoader;
-
-    [Inject]
-    private void Construct(SceneLoader sceneLoader)
+    public class GameStarter : MonoBehaviour
     {
-        _sceneLoader = sceneLoader;
-    }
+        [SerializeField] private GameConfig _gameConfig;
+        private SceneLoader _sceneLoader;
 
-    private void Start()
-    {
-        _sceneLoader.Load(_gameConfig.StartScene);
+        [Inject]
+        private void Construct(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
+
+        private void Start()
+        {
+            _sceneLoader.Load(_gameConfig.StartScene);
+        }
     }
 }
