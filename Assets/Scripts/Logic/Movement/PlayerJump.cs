@@ -24,9 +24,9 @@ namespace Player.Movement
 
         private void OnEnable()
         {
-            _inputActionMaps.Map.Jump.performed += Jump;
+            _inputActionMaps.Map.Jump.performed += OnJump;
         }
-
+        
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -35,15 +35,20 @@ namespace Player.Movement
 
         private void OnDisable()
         {
-            _inputActionMaps.Map.Jump.performed -= Jump;
+            _inputActionMaps.Map.Jump.performed -= OnJump;
         }
 
         private void Update()
         {
             _remainingJumpCooldown -= Time.deltaTime;
         }
-
-        private void Jump(InputAction.CallbackContext callbackContext)
+        
+        private void OnJump(InputAction.CallbackContext obj)
+        {
+            Jump();
+        }
+        
+        private void Jump()
         {
             if (ReadyToJump())
             {
