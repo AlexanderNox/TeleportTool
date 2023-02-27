@@ -1,7 +1,7 @@
 using UnityEngine;
-using static Extentions.UnityExtension;
+using static Extensions.UnityExtension;
 
-namespace Logic
+namespace Logic.Metamorphos
 {
     [RequireComponent(typeof(Rigidbody))]
     public class MetamorphosedОbject : MonoBehaviour, IMetamorphosable

@@ -1,4 +1,4 @@
-namespace Logic
+namespace Logic.Metamorphos
 {
     public interface IMetamorphosable
     {

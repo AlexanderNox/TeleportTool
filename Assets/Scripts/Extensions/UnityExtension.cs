@@ -1,7 +1,7 @@
-using Logic;
+using Logic.Metamorphos;
 using UnityEngine;
 
-namespace Extentions
+namespace Extensions
 {
     public static class UnityExtension
     {

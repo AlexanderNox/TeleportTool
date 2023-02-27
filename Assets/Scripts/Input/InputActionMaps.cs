@@ -62,6 +62,15 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LevelRestart"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b98f820-20fe-4a7a-8d3e-e3d86469832f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
                     ""action"": ""CameraDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fc16313-54ca-42f7-98dc-69f5dd7de6c1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LevelRestart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
         m_Map_Jump = m_Map.FindAction("Jump", throwIfNotFound: true);
         m_Map_Shoot = m_Map.FindAction("Shoot", throwIfNotFound: true);
         m_Map_CameraDelta = m_Map.FindAction("CameraDelta", throwIfNotFound: true);
+        m_Map_LevelRestart = m_Map.FindAction("LevelRestart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
     private readonly InputAction m_Map_Jump;
     private readonly InputAction m_Map_Shoot;
     private readonly InputAction m_Map_CameraDelta;
+    private readonly InputAction m_Map_LevelRestart;
     public struct MapActions
     {
         private @InputActionMaps m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Map_Jump;
         public InputAction @Shoot => m_Wrapper.m_Map_Shoot;
         public InputAction @CameraDelta => m_Wrapper.m_Map_CameraDelta;
+        public InputAction @LevelRestart => m_Wrapper.m_Map_LevelRestart;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
                 @CameraDelta.started -= m_Wrapper.m_MapActionsCallbackInterface.OnCameraDelta;
                 @CameraDelta.performed -= m_Wrapper.m_MapActionsCallbackInterface.OnCameraDelta;
                 @CameraDelta.canceled -= m_Wrapper.m_MapActionsCallbackInterface.OnCameraDelta;
+                @LevelRestart.started -= m_Wrapper.m_MapActionsCallbackInterface.OnLevelRestart;
+                @LevelRestart.performed -= m_Wrapper.m_MapActionsCallbackInterface.OnLevelRestart;
+                @LevelRestart.canceled -= m_Wrapper.m_MapActionsCallbackInterface.OnLevelRestart;
             }
             m_Wrapper.m_MapActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
                 @CameraDelta.started += instance.OnCameraDelta;
                 @CameraDelta.performed += instance.OnCameraDelta;
                 @CameraDelta.canceled += instance.OnCameraDelta;
+                @LevelRestart.started += instance.OnLevelRestart;
+                @LevelRestart.performed += instance.OnLevelRestart;
+                @LevelRestart.canceled += instance.OnLevelRestart;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @InputActionMaps : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnCameraDelta(InputAction.CallbackContext context);
+        void OnLevelRestart(InputAction.CallbackContext context);
     }
 }
