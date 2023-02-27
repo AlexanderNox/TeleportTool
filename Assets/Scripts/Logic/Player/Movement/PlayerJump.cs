@@ -1,9 +1,8 @@
-using Logic.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Player.Movement
+namespace Logic.Movement
 {
     [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(GroundChecker))]
     public class PlayerJump : MonoBehaviour
