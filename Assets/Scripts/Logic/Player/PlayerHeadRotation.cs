@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Logic.Movement
 {
-    public class PlayerCameraMovement : MonoBehaviour
+    public class PlayerHeadRotation : MonoBehaviour
     {
         [SerializeField] private float _xSensitivity;
         [SerializeField] private float _ySensitivity;
@@ -25,6 +25,7 @@ namespace Logic.Movement
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            _mouseDelta = new Vector2(10, 10);
         }
 
         private void LateUpdate()

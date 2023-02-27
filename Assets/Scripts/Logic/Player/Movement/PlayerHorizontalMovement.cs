@@ -83,8 +83,10 @@ namespace Logic.Movement
 
       private void SpeedControl(Vector3 flatVelocity)
       {
-         if (flatVelocity.magnitude > _maxMoveSpeed)
+         
+         if (flatVelocity.magnitude > _maxMoveSpeed && _groundChecker.GroundCheck())
          {
+            Debug.Log("SpeedControl");
             Vector3 limitedVelocity = flatVelocity.normalized * _maxMoveSpeed;
             _rigidbody.velocity = new Vector3(limitedVelocity.x, _rigidbody.velocity.y, limitedVelocity.z);
          }

@@ -33,7 +33,6 @@ namespace Infrastructure
 
       private void End()
       {
-        
          _sceneLoader.Load(MainMenuScene);
       }
 
