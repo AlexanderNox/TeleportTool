@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3589634637499446250}
   - component: {fileID: 3589634637499446253}
+  - component: {fileID: 8990805959554448876}
   m_Layer: 0
   m_Name: MetamorphosGun
   m_TagString: Untagged
@@ -93,6 +94,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunUser: {fileID: 3589634638701889288}
+--- !u!114 &8990805959554448876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3589634637499446251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ca84115ab77894d833f46c41484ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "_playerMetamorphosed\u041Ebject": {fileID: 3589634638701889288}
 --- !u!1 &3589634637632306932
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,12 +149,12 @@ GameObject:
   - component: {fileID: 3589634638701889285}
   - component: {fileID: 3589634638701889282}
   - component: {fileID: 3589634638701889283}
+  - component: {fileID: 6936753614291986466}
   - component: {fileID: 3589634638701889286}
   - component: {fileID: 3589634638701889291}
   - component: {fileID: 6168890534170852714}
   - component: {fileID: 1246572825581619258}
   - component: {fileID: 3589634638701889284}
-  - component: {fileID: 3589634638701889289}
   - component: {fileID: 3589634638701889288}
   - component: {fileID: 3589634638701889287}
   m_Layer: 0
@@ -219,6 +233,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6936753614291986466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3589634638701889281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798e822999a74501b23e199fbbbc744e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1246572825581619258}
 --- !u!54 &3589634638701889286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -272,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effa651658964f14b747189df17edc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CameraPosition>k__BackingField: {fileID: 0}
 --- !u!114 &3589634638701889284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,20 +315,6 @@ MonoBehaviour:
   _orientation: {fileID: 3589634638991123990}
   _airMultiplier: 1
   _maxMoveSpeed: 7
---- !u!114 &3589634638701889289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589634638701889281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0bd600b97ab814d8228591176a3b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _jumpForce: 10
-  _jumpCooldown: 1
 --- !u!114 &3589634638701889288
 MonoBehaviour:
   m_ObjectHideFlags: 0

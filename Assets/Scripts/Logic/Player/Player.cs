@@ -6,8 +6,8 @@ namespace Infrastructure
 {
     public class Player : MonoBehaviour, IСanDie
     {
-        [field: SerializeField] public Transform CameraPosition { get; private set; }
         public event Action RestartRequest;
+        public event Action Died;
 
         public void InvokeRestartRequest()
         {
@@ -17,6 +17,7 @@ namespace Infrastructure
         public void Death()
         {
             RestartRequest?.Invoke();
+            Died?.Invoke();
         }
     }
 }

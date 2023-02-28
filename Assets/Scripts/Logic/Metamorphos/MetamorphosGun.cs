@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -26,6 +27,11 @@ namespace Logic.Metamorphos
         private void OnEnable()
         {
             _inputActionMaps.Map.Shoot.performed += OnShootInput;
+        }
+
+        private void OnDisable()
+        {
+            _inputActionMaps.Map.Shoot.performed -= OnShootInput;
         }
 
         private void OnShootInput(InputAction.CallbackContext obj)

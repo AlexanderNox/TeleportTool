@@ -1,6 +1,5 @@
 //This class allows to have full control
 //over the parameters transferred as a result of the metamorphosis.
-
 using UnityEngine;
 
 namespace Logic.Metamorphos

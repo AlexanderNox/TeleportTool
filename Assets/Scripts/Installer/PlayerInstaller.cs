@@ -11,13 +11,13 @@ namespace Installer
             
         public override void InstallBindings()
         {
-            Player player =
+            Player instance =
                 Container.InstantiatePrefabForComponent<Player>(_prefab, _spawnPosition.position,
                     _spawnPosition.rotation, null);
 
             Container
                 .Bind<Player>()
-                .FromInstance(player)
+                .FromInstance(instance)
                 .AsSingle();
         }
     }
