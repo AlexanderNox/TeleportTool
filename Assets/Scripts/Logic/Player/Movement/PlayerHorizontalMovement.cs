@@ -9,7 +9,6 @@ namespace Logic.Movement
    {
       [SerializeField] private float _groundDrag;
       [SerializeField] private Transform _orientation;
-      [SerializeField] private float _airMultiplier;
       [SerializeField] private float _maxMoveSpeed;
 
       private const int MoveSpeedMultiplier = 10;
@@ -74,10 +73,6 @@ namespace Logic.Movement
          if (_groundChecker.GroundCheck())
          {
             _rigidbody.AddForce(_moveDirection.normalized * _maxMoveSpeed * MoveSpeedMultiplier, ForceMode.Force);
-         }
-         else if (_groundChecker.GroundCheck() == false)
-         {
-            _rigidbody.AddForce(_moveDirection.normalized * _maxMoveSpeed * MoveSpeedMultiplier * _airMultiplier, ForceMode.Force);
          }
       }
 

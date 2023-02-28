@@ -32,7 +32,6 @@ namespace Infrastructure.StateMachine
         {
             _currentState?.Exit();
             
-            Debug.Log(typeof(TState).ToString());
             TState state = GetState<TState>();
             _currentState = state;
       
