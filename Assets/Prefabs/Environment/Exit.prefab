@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2225152255872918895}
   - component: {fileID: 2225152255872918894}
   - component: {fileID: 2225152255872918889}
-  - component: {fileID: 2225152255872918888}
+  - component: {fileID: 6985867134196106275}
   - component: {fileID: 6232261943237797165}
   - component: {fileID: 6953965726481250508}
   m_Layer: 0
@@ -347,7 +347,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &2225152255872918888
+--- !u!114 &6985867134196106275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6f3b28dc3076e4ea36c9d3f5b7eecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: 3d25991d22e48c049ae4b40cd400e24c, type: 3}
 --- !u!82 &6953965726481250508
 AudioSource:
   m_ObjectHideFlags: 0

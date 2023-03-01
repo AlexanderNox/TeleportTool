@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -20,13 +21,19 @@ namespace Logic.Movement
         {
             _inputActionMaps = inputActionMaps;
         }
-
-        private void Start()
+        
+        private void OnEnable()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            _mouseDelta = new Vector2(10, 10);
         }
+
+        private void OnDisable()
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+
 
         private void LateUpdate()
         {
@@ -43,8 +50,13 @@ namespace Logic.Movement
             _xRotation -= mouseY;
 
             _xRotation = Mathf.Clamp(_xRotation, -XRotationClamp, XRotationClamp);
-            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
-            _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
+            SetRotation(_xRotation, _yRotation);
+        }
+
+        private void SetRotation(float xRotation, float yRotation)
+        {
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            _orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         }
     }
 }

@@ -1,28 +1,28 @@
 using Infrastructure;
 using UnityEngine;
 
-[RequireComponent(typeof(EndTrigger), typeof(AudioSource))]
+[RequireComponent(typeof(LevelEndTrigger), typeof(AudioSource))]
 public class EndTriggerAudioBinder : MonoBehaviour
 {
     [SerializeField] private AudioClip _audioClip;
-    private EndTrigger _endTrigger;
+    private LevelEndTrigger _levelEndTrigger;
     private AudioSource _audioSource;
 
     private void Awake()
     {
-        _endTrigger = GetComponent<EndTrigger>();
+        _levelEndTrigger = GetComponent<LevelEndTrigger>();
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = _audioClip;
     }
     
     private void OnEnable()
     {
-        _endTrigger.Triggerred += OnTriggerred;
+        _levelEndTrigger.Triggerred += OnTriggerred;
     }
 
     private void OnDisable()
     {
-        _endTrigger.Triggerred -= OnTriggerred;
+        _levelEndTrigger.Triggerred -= OnTriggerred;
     }
 
     private void OnTriggerred()

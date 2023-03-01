@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Infrastructure
 {
-    public class EndTrigger : MonoBehaviour
+    public class LevelEndTrigger : MonoBehaviour
     {
         public event Action Triggerred;
 

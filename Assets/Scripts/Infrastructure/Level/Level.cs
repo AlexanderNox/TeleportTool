@@ -7,7 +7,7 @@ namespace Infrastructure
 {
    public class Level : MonoBehaviour
    {
-      [SerializeField] private EndTrigger _endTrigger;
+      [SerializeField] private LevelEndTrigger _levelEndTrigger;
       private Player _player;
       private SceneLoader _sceneLoader;
       
@@ -23,18 +23,19 @@ namespace Infrastructure
       private void OnEnable()
       {
          _player.RestartRequest += Restart;
-         _endTrigger.Triggerred += Complete;
+         _levelEndTrigger.Triggerred += Complete;
       }
 
       private void OnDisable()
       {
          _player.RestartRequest -= Restart;
-         _endTrigger.Triggerred -= Complete;
+         _levelEndTrigger.Triggerred -= Complete;
       }
 
       private void Complete()
-      { 
+      {
          LevelComplete?.Invoke();
+         gameObject.SetActive(false);
       }
 
       private void Restart()
