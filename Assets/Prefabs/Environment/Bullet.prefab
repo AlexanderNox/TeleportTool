@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 3441297462498013985}
-  _force: 2
+  _force: 0.1
 --- !u!54 &3441297462498013985
 Rigidbody:
   m_ObjectHideFlags: 0
