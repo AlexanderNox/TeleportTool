@@ -7,9 +7,12 @@ namespace Infrastructure
 {
     public class SceneLoader : MonoBehaviour
     {
-        public event Action LoadStarted; 
+        [SerializeField] private Curtain _curtain;
+        
+        public event Action LoadStarted;
         public event Action LoadEnded;
         private bool _loading;
+        private string _loadingSceneName;
 
         private void Awake()
         {
@@ -21,8 +24,16 @@ namespace Infrastructure
         {
             if (_loading == false)
             {
-                StartCoroutine(LoadScene(name));
+                _loadingSceneName = name;
+                _curtain.ScreenHide += StartLoadScene;
+                _curtain.Show();
             }
+        }
+
+        private void StartLoadScene()
+        {
+            _curtain.ScreenHide -= StartLoadScene;
+            StartCoroutine(LoadScene(_loadingSceneName));
         }
 
         private IEnumerator LoadScene(string nextScene)
@@ -34,9 +45,10 @@ namespace Infrastructure
 
             while (!waitNextScene.isDone)
                 yield return null;
-        
+            
             _loading = false;
             LoadEnded?.Invoke();
+            _curtain.Hide();
         }
     }
 }

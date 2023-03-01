@@ -1,15 +1,17 @@
 using Infrastructure;
+using UnityEngine;
 using Zenject;
 
 namespace Installer
 {
     public class SceneLoaderInstaller : MonoInstaller
     {
+        [SerializeField] private SceneLoader _prefab;
         public override void InstallBindings()
         {
             Container
                 .Bind<SceneLoader>()
-                .FromNewComponentOnNewGameObject()
+                .FromComponentInNewPrefab(_prefab)
                 .AsSingle();
         }
     }
